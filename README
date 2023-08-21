@@ -1,0 +1,39 @@
+线程：一个正在运行的函数，没有主次之分
+
+线程的调度取决于调度器策略
+pthread_cleanup_push和pthread_cleanup_pop是宏定义，需要成对出现，pthread_cleanup_pop的第二个参数只是判断是否需要执行钩子函数
+
+线程的取消由取消选项决定，允许取消和不允许取消
+cancel点：POSIX定义的cancel点，都是可能引发阻塞的系统调用
+允许取消又分为:异步cancel，推迟cancel(默认)->推迟至cancel点再取消
+
+pthread_setcanclestate设置是否允许被取消
+pthread_setcancletype设置取消方式
+pthread_testcancle()函数什么都不做，就是一个取消点
+
+线程的栈是独立的
+
+互斥锁是限制某一段代码能否运行而不是限制变量
+
+使用互斥量和线程做一个令牌桶
+
+pthread_once()动态模块的单次初始化函数
+
+信号量：利用互斥量和条件变量来完成一个信号量定义的实现
+
+可以用clone()函数来建立一个既不是进程也不是线程的
+
+重入
+    多线程中的I/O，现在的标准I/O都已经支持了多线程并发
+    
+    线程与信号
+        pthread_sigmask()
+        pthread_kill()
+    
+    线程与fork
+        看是POSIX标准还是其他的标准
+
+多线程并发使用模式
+    流水线模式
+    工作组模式
+    C/S模式
